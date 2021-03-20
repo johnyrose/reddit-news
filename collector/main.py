@@ -2,6 +2,7 @@ import settings
 import praw
 import schedule
 import time
+from sqlalchemy import create_engine
 from fetch_posts import fetch_posts
 
 
@@ -14,6 +15,7 @@ def save_subreddit(client: praw.Reddit, config: dict):
 
 
 if __name__ == "__main__":
+    db_engine = create_engine('sqlite:///:./db.sqlite', echo=True)
     reddit_client = praw.Reddit(
         client_id=settings.REDDIT_CLIENT_ID,
         client_secret=settings.REDDIT_CLIENT_SECRET,
