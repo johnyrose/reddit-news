@@ -3,7 +3,7 @@ import praw
 import schedule
 import time
 from post import Post
-from db_connector import session_object
+from db_connector import session_object, Base, db_engine
 from fetch_posts import fetch_posts
 
 
@@ -14,6 +14,9 @@ def save_subreddit(client: praw.Reddit, config: dict):
                         ignore_stickied=config['ignoreStickied'])
     post_objects = []
     for post in posts:
+        current_post = session_object.query(Post).filter_by(permalink=post.permalink).one_or_none()
+        if current_post:
+            session_object.delete(current_post)
         post_objects.append(Post(
             title=post.title,
             score=post.score,
@@ -22,9 +25,11 @@ def save_subreddit(client: praw.Reddit, config: dict):
             over_18=post.over_18
         ))
     session_object.add_all(post_objects)
+    session_object.commit()
 
 
 if __name__ == "__main__":
+    Base.metadata.create_all(db_engine)
     reddit_client = praw.Reddit(
         client_id=settings.REDDIT_CLIENT_ID,
         client_secret=settings.REDDIT_CLIENT_SECRET,
