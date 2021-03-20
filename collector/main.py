@@ -2,7 +2,8 @@ import settings
 import praw
 import schedule
 import time
-from sqlalchemy import create_engine
+from post import Post
+from db_connector import session_object
 from fetch_posts import fetch_posts
 
 
@@ -11,11 +12,19 @@ def save_subreddit(client: praw.Reddit, config: dict):
                         subreddit=config['name'],
                         posts_amount=config['posts'],
                         ignore_stickied=config['ignoreStickied'])
-    print(posts)
+    post_objects = []
+    for post in posts:
+        post_objects.append(Post(
+            title=post.title,
+            score=post.score,
+            url=post.url,
+            permalink=post.permalink,
+            over_18=post.over_18
+        ))
+    session_object.add_all(post_objects)
 
 
 if __name__ == "__main__":
-    db_engine = create_engine('sqlite:///:./db.sqlite', echo=True)
     reddit_client = praw.Reddit(
         client_id=settings.REDDIT_CLIENT_ID,
         client_secret=settings.REDDIT_CLIENT_SECRET,
