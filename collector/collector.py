@@ -1,7 +1,7 @@
 from models.post import Post
 from common import settings
 import praw
-from common.db_connector import session_object, Base, db_engine
+from common.db_connector import session_object
 from .fetch_posts import fetch_posts
 
 
@@ -27,7 +27,6 @@ def save_subreddit(client: praw.Reddit, config: dict):
 
 
 def collect_subreddits():
-    Base.metadata.create_all(db_engine)
     reddit_client = praw.Reddit(
         client_id=settings.REDDIT_CLIENT_ID,
         client_secret=settings.REDDIT_CLIENT_SECRET,
