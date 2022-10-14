@@ -6,7 +6,8 @@ class Article(Base):
     __tablename__ = 'articles'
 
     id = Column(Integer, primary_key=True)
-    article_id = Column(String)
+    post_id = Column(String)
+    title = Column(String)
     text = Column(String)
     url = Column(String)
     image_url = Column(String, nullable=True)
