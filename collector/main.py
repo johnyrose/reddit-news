@@ -1,6 +1,5 @@
 import settings
 import praw
-import schedule
 import time
 from post import Post
 from db_connector import session_object, Base, db_engine
@@ -38,7 +37,4 @@ if __name__ == "__main__":
         user_agent=settings.REDDIT_USER_AGENT
     )
     for subreddit_config in settings.SUBREDDITS_CONFIG:
-        schedule.every(subreddit_config['secondsInterval']).seconds.do(save_subreddit, reddit_client, subreddit_config)
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+        save_subreddit(reddit_client, subreddit_config)
