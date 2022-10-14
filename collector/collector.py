@@ -1,4 +1,4 @@
-from .post import Post
+from models.post import Post
 from common import settings
 import praw
 from common.db_connector import session_object, Base, db_engine
