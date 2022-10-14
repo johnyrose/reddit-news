@@ -1,8 +1,7 @@
 import settings
 import praw
-import time
 from post import Post
-from db_connector import session_object, Base, db_engine
+from common.db_connector import session_object, Base, db_engine
 from fetch_posts import fetch_posts
 
 

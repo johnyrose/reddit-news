@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Boolean
-from db_connector import Base
+from common.db_connector import Base
 
 
 class Post(Base):
