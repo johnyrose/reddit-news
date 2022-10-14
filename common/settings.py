@@ -13,5 +13,9 @@ REDDIT_USER_AGENT = config['reddit']['userAgent']
 EXTRACTOR_API_TOKEN = config['extractor']['api_token']
 EXTRACTOR_URL = config['extractor']['url']
 
+URLMETA_URL = config['urlmeta']['url']
+URLMETA_EMAIL = config['urlmeta']['email']
+URLMETA_API_TOKEN = config['urlmeta']['api_token']
+
 SUBREDDITS_CONFIG = config['subreddits']
 DB_FILE = config['db_file']
