@@ -5,8 +5,8 @@ from models.article import Article
 
 if __name__ == '__main__':
     Base.metadata.create_all(db_engine)
-    # collect_subreddits()
-    # generate_articles()
-
-    res = session_object.query(Article).all()
-    print(res)
+    collect_subreddits()
+    generate_articles()
+    #
+    # res = session_object.query(Article).all()
+    # print(res)
