@@ -1,3 +1,4 @@
 SQLAlchemy==1.4.41
 praw==7.6.0
 requests==2.28.1A
+jinja2==3.1.2
