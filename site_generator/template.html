@@ -421,6 +421,7 @@
                      </tr>
                   </tbody>
                </table>
+               {% for news_row in news_rows %}
                <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-6" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                   <tbody>
                      <tr>
@@ -447,7 +448,7 @@
                                              <td class="pad" style="padding-bottom:5px;padding-left:15px;padding-right:25px;">
                                                 <div style="font-family: sans-serif">
                                                    <div class="" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; mso-line-height-alt: 18px; color: #000000; line-height: 1.5;">
-                                                      <p style="margin: 0; font-size: 12px; text-align: left; mso-line-height-alt: 33px;"><span style="font-size:22px;background-color:#e8e8e8;"><span style="font-size:22px;background-color:#e8e8e8;"> <strong>NEWS</strong> FROM LOREM IPSUM </span></span></p>
+                                                      <p style="margin: 0; font-size: 12px; text-align: left; mso-line-height-alt: 33px;"><span style="font-size:22px;background-color:#e8e8e8;"><span style="font-size:22px;background-color:#e8e8e8;"> <strong>NEWS</strong> FROM {{ news_row.name }} </span></span></p>
                                                    </div>
                                                 </div>
                                              </td>
@@ -467,103 +468,44 @@
                         <td>
                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 700px;" width="700">
                               <tbody>
-                                 <tr>
-                                    <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 15px; padding-right: 15px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%">
-                                       <table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-                                          <tr>
-                                             <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;">
-                                                <div align="center" class="alignment" style="line-height:10px"><img alt="Article Thumbnail" class="fullMobileWidth" src="images/1_b.jpg" style="display: block; height: auto; border: 0; width: 203px; max-width: 100%;" title="Article Thumbnail" width="203"/></div>
-                                             </td>
-                                          </tr>
-                                       </table>
-                                       <table border="0" cellpadding="0" cellspacing="0" class="text_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-                                          <tr>
-                                             <td class="pad" style="padding-top:10px;">
-                                                <div style="font-family: sans-serif">
-                                                   <div class="" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; mso-line-height-alt: 18px; color: #555555; line-height: 1.5;">
-                                                      <p style="margin: 0; font-size: 12px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;"><strong>Title of a mini news in this beautiful row.</strong></span></p>
-                                                   </div>
+                              {% for article in news_row.articles %}
+                              <td class="column column-3" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 15px; padding-right: 15px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%">
+                                 <a style="text-decoration: none" href="{{ article.url }}">
+                                    <table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+                                       <tr>
+                                          <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;">
+                                             <div align="center" class="alignment" style="line-height:10px"><img alt="Article Thumbnail" class="fullMobileWidth" src="{{ article.image }}" style="display: block; height: auto; border: 0; width: 203px; max-width: 100%;" title="Article Thumbnail" width="203"/></div>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" class="text_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+                                       <tr>
+                                          <td class="pad" style="padding-top:10px;">
+                                             <div style="font-family: sans-serif">
+                                                <div class="" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; mso-line-height-alt: 18px; color: #555555; line-height: 1.5;">
+                                                   <p style="margin: 0; font-size: 12px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;"><strong>{{ article.title }}</strong></span></p>
                                                 </div>
-                                             </td>
-                                          </tr>
-                                       </table>
-                                       <table border="0" cellpadding="0" cellspacing="0" class="text_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-                                          <tr>
-                                             <td class="pad" style="padding-top:5px;padding-bottom:5px;">
-                                                <div style="font-family: sans-serif">
-                                                   <div class="" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
-                                                      <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 25.2px;"><span style="font-size:14px;">Nulla lacinia feugiat lectus sed tempor morbi...</span></p>
-                                                   </div>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" class="text_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
+                                       <tr>
+                                          <td class="pad" style="padding-top:5px;padding-bottom:5px;">
+                                             <div style="font-family: sans-serif">
+                                                <div class="" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
+                                                   <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 25.2px;"><span style="font-size:14px;">{{ article.text }}</span></p>
                                                 </div>
-                                             </td>
-                                          </tr>
-                                       </table>
-                                    </td>
-                                    <td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 15px; padding-right: 15px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%">
-                                       <table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-                                          <tr>
-                                             <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;">
-                                                <div align="center" class="alignment" style="line-height:10px"><img alt="Article Thumbnail" class="fullMobileWidth" src="images/2b.jpg" style="display: block; height: auto; border: 0; width: 203px; max-width: 100%;" title="Article Thumbnail" width="203"/></div>
-                                             </td>
-                                          </tr>
-                                       </table>
-                                       <table border="0" cellpadding="0" cellspacing="0" class="text_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-                                          <tr>
-                                             <td class="pad" style="padding-top:10px;">
-                                                <div style="font-family: sans-serif">
-                                                   <div class="" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; mso-line-height-alt: 18px; color: #555555; line-height: 1.5;">
-                                                      <p style="margin: 0; font-size: 12px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;"><strong>Title of a mini news in this beautiful row.</strong></span></p>
-                                                   </div>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                       </table>
-                                       <table border="0" cellpadding="0" cellspacing="0" class="text_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-                                          <tr>
-                                             <td class="pad" style="padding-top:5px;padding-bottom:5px;">
-                                                <div style="font-family: sans-serif">
-                                                   <div class="" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
-                                                      <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 25.2px;"><span style="font-size:14px;">Nulla lacinia feugiat lectus sed tempor morbi...</span></p>
-                                                   </div>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                       </table>
-                                    </td>
-                                    <td class="column column-3" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 15px; padding-right: 15px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%">
-                                       <table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-                                          <tr>
-                                             <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;">
-                                                <div align="center" class="alignment" style="line-height:10px"><img alt="Article Thumbnail" class="fullMobileWidth" src="images/3b.jpg" style="display: block; height: auto; border: 0; width: 203px; max-width: 100%;" title="Article Thumbnail" width="203"/></div>
-                                             </td>
-                                          </tr>
-                                       </table>
-                                       <table border="0" cellpadding="0" cellspacing="0" class="text_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-                                          <tr>
-                                             <td class="pad" style="padding-top:10px;">
-                                                <div style="font-family: sans-serif">
-                                                   <div class="" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; mso-line-height-alt: 18px; color: #555555; line-height: 1.5;">
-                                                      <p style="margin: 0; font-size: 12px; text-align: left; mso-line-height-alt: 24px;"><span style="font-size:16px;"><strong>Title of a mini news in this beautiful row.</strong></span></p>
-                                                   </div>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                       </table>
-                                       <table border="0" cellpadding="0" cellspacing="0" class="text_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-                                          <tr>
-                                             <td class="pad" style="padding-top:5px;padding-bottom:5px;">
-                                                <div style="font-family: sans-serif">
-                                                   <div class="" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; mso-line-height-alt: 21.6px; color: #555555; line-height: 1.8;">
-                                                      <p style="margin: 0; font-size: 14px; text-align: left; mso-line-height-alt: 25.2px;"><span style="font-size:14px;">Nulla lacinia feugiat lectus sed tempor morbi...</span></p>
-                                                   </div>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                       </table>
-                                    </td>
-                                 </tr>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </a>
+                              </td>
+                              {% endfor %}
                               </tbody>
                            </table>
+                           {% endfor %}
                         </td>
                      </tr>
                   </tbody>
