@@ -31,7 +31,7 @@ def generate_articles():
             text = get_text_from_article_url(post.url)
             image = get_image_url_from_article_url(post.url)
             new_article = Article(post_id=post.id, title=post.title, text=text, url=post.url,
-                                  image_url=image)
+                                  image_url=image, score=post.score)
             session_object.add(new_article)
             session_object.commit()
         except Exception as e:

@@ -6,6 +6,7 @@ class Article(Base):
     __tablename__ = 'articles'
 
     id = Column(Integer, primary_key=True)
+    score = Column(Integer)  # The upvotes it got on Reddit
     post_id = Column(String)
     title = Column(String)
     text = Column(String)
