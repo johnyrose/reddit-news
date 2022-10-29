@@ -6,10 +6,10 @@ from site_generator.generate_site import generate_site
 
 if __name__ == '__main__':
     Base.metadata.create_all(db_engine)
-    print('Collecting subreddits...')
-    collect_subreddits()
-    print('Generating articles...')
-    generate_articles()
+    # print('Collecting subreddits...')
+    # collect_subreddits()
+    # print('Generating articles...')
+    # generate_articles()
     print('Choosing articles...')
     website = choose_articles()
     print('Generating site...')
