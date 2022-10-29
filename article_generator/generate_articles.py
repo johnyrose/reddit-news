@@ -4,8 +4,8 @@ import requests
 
 from common.db_connector import session_object
 from common.settings import EXTRACTOR_URL, EXTRACTOR_API_TOKEN, URLMETA_URL, URLMETA_EMAIL, URLMETA_API_TOKEN
-from models.article import Article
-from models.post import Post
+from models.db.article import Article
+from models.db.post import Post
 
 
 def get_text_from_article_url(article_url: str) -> str:
