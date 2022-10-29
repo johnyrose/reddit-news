@@ -19,6 +19,7 @@ URLMETA_API_TOKEN = config['urlmeta']['api_token']
 
 SUBREDDITS_CONFIG = config['subreddits']
 DB_FILE = config['db_file']
+ENABLE_SQLALCHEMY_LOGGING = config['enable_sqlalchemy_logging']
 
 MAIN_ARTICLES_MAX_LENGTH = config['website']['main_article_max_length']
 SUB_ARTICLES_MAX_LENGTH = config['website']['sub_articles_max_length']
