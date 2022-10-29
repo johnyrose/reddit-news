@@ -6,7 +6,7 @@ from models.website.website import Website, NewsRow, WebsiteArticle
 
 
 def sort_articles_by_upvotes(articles: List[WebsiteArticle]) -> List[WebsiteArticle]:
-    return sorted(articles, key=lambda article: article.post.upvotes, reverse=True)
+    return sorted(articles, key=lambda article: article.score, reverse=True)
 
 
 def get_list_of_subreddits_with_articles(articles: List[WebsiteArticle]) -> List[str]:

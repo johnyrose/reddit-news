@@ -31,10 +31,7 @@ class WebsiteArticle(BaseModel):
 
 class NewsRow(BaseModel):
     name: str
-    articles = List[WebsiteArticle]  # Max length of 3
-
-    class Config:
-        arbitrary_types_allowed = True
+    articles: List[WebsiteArticle]  # Max length of 3
 
 
 class Website(BaseModel):
