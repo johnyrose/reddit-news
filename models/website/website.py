@@ -41,6 +41,8 @@ class Website(BaseModel):
     news_rows: List[NewsRow]
 
     def is_article_in_website(self, article: WebsiteArticle) -> bool:
+        if article == self.main_article:
+            return True
         if article in self.sub_articles:
             return True
         if article in self.mini_articles:
