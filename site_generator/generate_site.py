@@ -22,4 +22,4 @@ def generate_site(website: Website):
                              sub_articles=sub_articles,
                              mini_articles=mini_articles,
                              news_rows=news_rows)
-    open(OUTPUT_FILE, 'w').write(output)
+    open(OUTPUT_FILE, 'w', encoding='utf-8').write(output)
