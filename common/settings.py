@@ -21,6 +21,9 @@ SUBREDDITS_CONFIG = config['subreddits']
 DB_FILE = config['db_file']
 ENABLE_SQLALCHEMY_LOGGING = config['enable_sqlalchemy_logging']
 
+TEMPLATE_FILE = config['template_file']
+OUTPUT_FILE = config['output_file']
+
 MAIN_ARTICLES_MAX_LENGTH = config['website']['main_article_max_length']
 SUB_ARTICLES_MAX_LENGTH = config['website']['sub_articles_max_length']
 MINI_ARTICLES_MAX_LENGTH = config['website']['mini_articles_max_length']

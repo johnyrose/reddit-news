@@ -1,4 +1,6 @@
 import jinja2
+
+from common.settings import TEMPLATE_FILE, OUTPUT_FILE
 from models.website.website import Website
 from site_generator.article_cleanup import cleanup_website_articles
 from site_generator.article_shorten import shorten_website_articles
@@ -6,7 +8,7 @@ from site_generator.article_shorten import shorten_website_articles
 
 def generate_site(website: Website):
     env = jinja2.Environment()
-    template_file_content = open('site_generator/template.html').read()
+    template_file_content = open(TEMPLATE_FILE).read()
     template = env.from_string(template_file_content)
     cleanup_website_articles(website)
     shorten_website_articles(website)
@@ -20,4 +22,4 @@ def generate_site(website: Website):
                              sub_articles=sub_articles,
                              mini_articles=mini_articles,
                              news_rows=news_rows)
-    open('site_generator/output.html', 'w').write(output)
+    open(OUTPUT_FILE, 'w').write(output)
