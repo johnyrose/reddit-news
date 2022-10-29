@@ -5,7 +5,8 @@ texts_to_remove = [
     "IE 11 is not supported.",
     "Please refresh the page or navigate to another page on the site to be automatically logged in",
     "Please refresh your browser to be logged in",
-    "Sign up to comment and more"
+    "Sign up to comment and more",
+    "Share this item on Facebook",
 ]
 
 
