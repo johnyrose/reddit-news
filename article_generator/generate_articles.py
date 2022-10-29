@@ -24,16 +24,20 @@ def get_image_url_from_article_url(article_url: str) -> str:
     return res.json()['meta']['image']
 
 
+def generate_article_from_post(post: Post):
+    try:
+        text = get_text_from_article_url(post.url)
+        image = get_image_url_from_article_url(post.url)
+        new_article = Article(post_id=post.id, title=post.title, text=text, url=post.url,
+                              image_url=image, score=post.score, subreddit=post.subreddit)
+        session_object.add(new_article)
+        session_object.commit()
+    except Exception as e:
+        print(f'Failed to generate article for post {post.title}. The following error was received: {e}')
+        # TODO: Add a better log
+
+
 def generate_articles():
     current_posts = session_object.query(Post).all()
     for post in current_posts:
-        try:
-            text = get_text_from_article_url(post.url)
-            image = get_image_url_from_article_url(post.url)
-            new_article = Article(post_id=post.id, title=post.title, text=text, url=post.url,
-                                  image_url=image, score=post.score, subreddit=post.subreddit)
-            session_object.add(new_article)
-            session_object.commit()
-        except Exception as e:
-            print(f'Failed to generate article for post {post.title}. The following error was received: {e}')
-            # TODO: Add a better log
+        generate_article_from_post(post)
