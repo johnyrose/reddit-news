@@ -6,6 +6,7 @@ class Post(Base):
     __tablename__ = 'posts'
 
     id = Column(Integer, primary_key=True)
+    subreddit = Column(String)
     title = Column(String)
     score = Column(Integer)
     url = Column(String)

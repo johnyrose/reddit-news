@@ -2,22 +2,22 @@ from typing import List
 
 from common.db_connector import session_object
 from models.db.article import Article
-from models.website.website import Website, NewsRow
+from models.website.website import Website, NewsRow, WebsiteArticle
 
 
-def sort_articles_by_upvotes(articles: List[Article]) -> List[Article]:
+def sort_articles_by_upvotes(articles: List[WebsiteArticle]) -> List[WebsiteArticle]:
     return sorted(articles, key=lambda article: article.post.upvotes, reverse=True)
 
 
-def get_list_of_subreddits_with_articles(articles: List[Article]) -> List[str]:
-    return list(set([article.post.subreddit for article in articles]))
+def get_list_of_subreddits_with_articles(articles: List[WebsiteArticle]) -> List[str]:
+    return list(set([article.subreddit for article in articles]))
 
 
-def get_articles_for_subreddit(subreddit: str, articles: List[Article]) -> List[Article]:
-    return [article for article in articles if article.post.subreddit == subreddit]
+def get_articles_for_subreddit(subreddit: str, articles: List[WebsiteArticle]) -> List[WebsiteArticle]:
+    return [article for article in articles if article.subreddit == subreddit]
 
 
-def generate_news_rows(articles: List[Article], website: Website):
+def generate_news_rows(articles: List[WebsiteArticle], website: Website):
     subreddits = get_list_of_subreddits_with_articles(articles)
     for subreddit in subreddits:
         subreddit_articles = get_articles_for_subreddit(subreddit, articles)
@@ -29,7 +29,8 @@ def generate_news_rows(articles: List[Article], website: Website):
 
 
 def choose_articles() -> Website:
-    current_articles: List[Article] = session_object.query(Article).all()  # TODO: Don't fetch all articles
+    db_articles: List[Article] = session_object.query(Article).all()  # TODO: Don't fetch all articles
+    current_articles: List[WebsiteArticle] = [WebsiteArticle.from_db_article(article) for article in db_articles]
     sorted_articles = sort_articles_by_upvotes(current_articles)
     main_article = sorted_articles[0]
     website = Website(main_article=main_article, sub_articles=[], mini_articles=[], news_rows=[])

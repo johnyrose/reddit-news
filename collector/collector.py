@@ -17,6 +17,7 @@ def save_subreddit(client: praw.Reddit, config: dict):
             session_object.delete(current_post)
         post_objects.append(Post(
             title=post.title,
+            subreddit=post.subreddit.name,
             score=post.score,
             url=post.url,
             permalink=post.permalink,

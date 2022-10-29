@@ -8,6 +8,7 @@ class Article(Base):
     id = Column(Integer, primary_key=True)
     score = Column(Integer)  # The upvotes it got on Reddit
     post_id = Column(String)
+    subreddit = Column(String)
     title = Column(String)
     text = Column(String)
     url = Column(String)
