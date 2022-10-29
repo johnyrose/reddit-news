@@ -1,6 +1,8 @@
 from typing import List
 
 from common.db_connector import session_object
+from common.logger import logger
+from common.settings import MINIMUM_ARTICLES_AMOUNT_WARNING
 from models.db.article import Article
 from models.website.website import Website, NewsRow, WebsiteArticle
 
@@ -30,6 +32,9 @@ def generate_news_rows(articles: List[WebsiteArticle], website: Website):
 
 def choose_articles() -> Website:
     db_articles: List[Article] = session_object.query(Article).all()  # TODO: Don't fetch all articles
+    if len(db_articles) < MINIMUM_ARTICLES_AMOUNT_WARNING:
+        logger.warning(f'Too few articles: you have less than {MINIMUM_ARTICLES_AMOUNT_WARNING} articles in '
+                       f'the database, which means that the website might be broken.')
     current_articles: List[WebsiteArticle] = [WebsiteArticle.from_db_article(article) for article in db_articles]
     sorted_articles = sort_articles_by_upvotes(current_articles)
     main_article = sorted_articles[0]

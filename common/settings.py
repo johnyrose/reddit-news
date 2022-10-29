@@ -32,3 +32,5 @@ MINI_ARTICLES_MAX_LENGTH = config['website']['mini_articles_max_length']
 NEWS_ROW_MAX_LENGTH = config['website']['news_row_max_length']
 
 TITLES_MAX_LENGTH = config['website']['titles_max_length']
+
+MINIMUM_ARTICLES_AMOUNT_WARNING = 8
