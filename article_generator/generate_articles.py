@@ -3,7 +3,9 @@ import base64
 import requests
 
 from common.db_connector import session_object
-from common.settings import EXTRACTOR_URL, EXTRACTOR_API_TOKEN, URLMETA_URL, URLMETA_EMAIL, URLMETA_API_TOKEN
+from multiprocessing.pool import ThreadPool
+from common.settings import EXTRACTOR_URL, EXTRACTOR_API_TOKEN, URLMETA_URL, URLMETA_EMAIL, URLMETA_API_TOKEN, \
+    MAX_PARALLEL_REQUESTS
 from models.db.article import Article
 from models.db.post import Post
 
@@ -26,12 +28,12 @@ def get_image_url_from_article_url(article_url: str) -> str:
 
 def generate_article_from_post(post: Post):
     try:
+        print(f'Generating article for post {post.title}')
         text = get_text_from_article_url(post.url)
         image = get_image_url_from_article_url(post.url)
         new_article = Article(post_id=post.id, title=post.title, text=text, url=post.url,
                               image_url=image, score=post.score, subreddit=post.subreddit)
         session_object.add(new_article)
-        session_object.commit()
     except Exception as e:
         print(f'Failed to generate article for post {post.title}. The following error was received: {e}')
         # TODO: Add a better log
@@ -39,5 +41,6 @@ def generate_article_from_post(post: Post):
 
 def generate_articles():
     current_posts = session_object.query(Post).all()
-    for post in current_posts:
-        generate_article_from_post(post)
+    with ThreadPool(MAX_PARALLEL_REQUESTS) as pool:
+        pool.map(generate_article_from_post, current_posts)
+    session_object.commit()

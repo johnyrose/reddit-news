@@ -13,6 +13,8 @@ REDDIT_USER_AGENT = config['reddit']['userAgent']
 EXTRACTOR_API_TOKEN = config['extractor']['api_token']
 EXTRACTOR_URL = config['extractor']['url']
 
+MAX_PARALLEL_REQUESTS = config['max_parallel_requests']
+
 URLMETA_URL = config['urlmeta']['url']
 URLMETA_EMAIL = config['urlmeta']['email']
 URLMETA_API_TOKEN = config['urlmeta']['api_token']
