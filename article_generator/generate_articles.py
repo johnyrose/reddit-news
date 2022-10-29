@@ -4,6 +4,8 @@ import requests
 
 from common.db_connector import session_object
 from multiprocessing.pool import ThreadPool
+
+from common.logger import logger
 from common.settings import EXTRACTOR_URL, EXTRACTOR_API_TOKEN, URLMETA_URL, URLMETA_EMAIL, URLMETA_API_TOKEN, \
     MAX_PARALLEL_REQUESTS
 from models.db.article import Article
@@ -28,14 +30,14 @@ def get_image_url_from_article_url(article_url: str) -> str:
 
 def generate_article_from_post(post: Post):
     try:
-        print(f'Generating article for post {post.title}')
+        logger.info(f'Generating article for post {post.title}')
         text = get_text_from_article_url(post.url)
         image = get_image_url_from_article_url(post.url)
         new_article = Article(post_id=post.id, title=post.title, text=text, url=post.url,
                               image_url=image, score=post.score, subreddit=post.subreddit)
         session_object.add(new_article)
     except Exception as e:
-        print(f'Failed to generate article for post {post.title}. The following error was received: {e}')
+        logger.error(f'Failed to generate article for post {post.title}. The following error was received: {e}')
 
 
 def generate_articles():
