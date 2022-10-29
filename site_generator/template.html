@@ -120,6 +120,7 @@
                   <tbody>
                      <tr>
                         <td>
+                           <a href="{{ main_article.url }}" style="text-decoration:none"  target="_blank">
                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #FFFFFF; color: #000000; width: 700px;" width="700">
                               <tbody>
                                  <tr>
@@ -166,7 +167,7 @@
                                        <table border="0" cellpadding="10" cellspacing="0" class="button_block block-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                                           <tr>
                                              <td class="pad">
-                                                <a href="{{ main_article.url }}">
+                                                <a href="{{ main_article.url }}" target="_blank">
                                                 <div align="left" class="alignment">
                                                    <!--[if mso]>
                                                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="height:50px;width:247px;v-text-anchor:middle;" arcsize="0%" stroke="false" fillcolor="#3D3D3D">
@@ -189,6 +190,7 @@
                                  </tr>
                               </tbody>
                            </table>
+                           </a>
                         </td>
                      </tr>
                   </tbody>
@@ -231,6 +233,7 @@
                                  <tr>
                                     <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 20px; padding-right: 20px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="66.66666666666667%">
                                        {% for sub_article in sub_articles %}
+                                       <a href="{{ sub_article.url }}" style="text-decoration:none"  target="_blank">
                                        <table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                                           <tr>
                                              <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:25px;">
@@ -281,10 +284,11 @@
                                              </td>
                                           </tr>
                                        </table>
+                                       </a>
                                     {% endfor %}
                                     <td class="column column-2" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #ECECEC; padding-left: 20px; padding-right: 20px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%">
                                        {% for mini_article in mini_articles %}
-                                       <a style="text-decoration: none" href="{{ mini_article.url }}">
+                                       <a style="text-decoration: none" href="{{ mini_article.url }}" target="_blank">
                                        <table border="0" cellpadding="0" cellspacing="0" class="image_block block-10" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                                           <tr>
                                              <td class="pad" style="padding-top:15px;width:100%;padding-right:0px;padding-left:0px;">
@@ -383,7 +387,7 @@
                               <tbody>
                               {% for article in news_row.articles %}
                               <td class="column column-3" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 15px; padding-right: 15px; vertical-align: top; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="33.333333333333336%">
-                                 <a style="text-decoration: none" href="{{ article.url }}">
+                                 <a style="text-decoration: none" href="{{ article.url }}" target="_blank">
                                     <table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
                                        <tr>
                                           <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:5px;">
