@@ -2,7 +2,9 @@ from models.website.website import WebsiteArticle, Website
 
 texts_to_remove = [
     "IE 11 is not supported. For an optimal experience visit our site on another browser.",
-    "IE 11 is not supported."
+    "IE 11 is not supported.",
+    "Please refresh the page or navigate to another page on the site to be automatically logged in",
+    "Please refresh your browser to be logged in"
 ]
 
 

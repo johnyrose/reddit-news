@@ -1,6 +1,5 @@
 import jinja2
-import sys
-from models.website.website import Website, WebsiteArticle
+from models.website.website import Website
 from site_generator.article_cleanup import cleanup_website_articles
 from site_generator.article_shorten import shorten_website_articles
 
@@ -11,6 +10,7 @@ def generate_site(website: Website):
     template = env.from_string(template_file_content)
     cleanup_website_articles(website)
     shorten_website_articles(website)
+
     main_article = website.main_article.dict()
     sub_articles = [article.dict() for article in website.sub_articles]
     mini_articles = [article.dict() for article in website.mini_articles]
