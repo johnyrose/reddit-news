@@ -1,3 +1,5 @@
+from common.settings import MAIN_ARTICLES_MAX_LENGTH, SUB_ARTICLES_MAX_LENGTH, MINI_ARTICLES_MAX_LENGTH, \
+    NEWS_ROW_MAX_LENGTH
 from models.website.website import WebsiteArticle, Website
 
 
@@ -7,13 +9,12 @@ def shorten_article_text(article: WebsiteArticle, max_length: int):
 
 
 def shorten_website_articles(website: Website):
-    # TODO: Don't use magic numbers, store them in the config
-    shorten_article_text(website.main_article, 600)
+    shorten_article_text(website.main_article, MAIN_ARTICLES_MAX_LENGTH)
     for article in website.sub_articles:
-        shorten_article_text(article, 250)
+        shorten_article_text(article, SUB_ARTICLES_MAX_LENGTH)
     for article in website.mini_articles:
-        shorten_article_text(article, 100)
+        shorten_article_text(article, MINI_ARTICLES_MAX_LENGTH)
     for news_row in website.news_rows:
         for article in news_row.articles:
-            shorten_article_text(article, 200)
+            shorten_article_text(article, NEWS_ROW_MAX_LENGTH)
 

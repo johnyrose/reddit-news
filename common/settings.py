@@ -19,3 +19,8 @@ URLMETA_API_TOKEN = config['urlmeta']['api_token']
 
 SUBREDDITS_CONFIG = config['subreddits']
 DB_FILE = config['db_file']
+
+MAIN_ARTICLES_MAX_LENGTH = config['website']['main_article_max_length']
+SUB_ARTICLES_MAX_LENGTH = config['website']['sub_articles_max_length']
+MINI_ARTICLES_MAX_LENGTH = config['website']['mini_articles_max_length']
+NEWS_ROW_MAX_LENGTH = config['website']['news_row_max_length']
