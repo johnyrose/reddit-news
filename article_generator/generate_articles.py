@@ -36,7 +36,6 @@ def generate_article_from_post(post: Post):
         session_object.add(new_article)
     except Exception as e:
         print(f'Failed to generate article for post {post.title}. The following error was received: {e}')
-        # TODO: Add a better log
 
 
 def generate_articles():
