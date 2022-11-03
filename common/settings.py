@@ -1,5 +1,7 @@
 import json
 
+from models.website.sorting_method import SortingMethod
+
 with open('config.json') as config_file:
     config = json.load(config_file)
 
@@ -39,3 +41,9 @@ NEWS_ROW_ARTICLE_AMOUNT = config['website']['articles_amount']['news_row_article
 TITLES_MAX_LENGTH = config['website']['text_length']['titles']
 
 MINIMUM_ARTICLES_AMOUNT_WARNING = 1 + SUB_ARTICLES_AMOUNT + MINI_ARTICLES_AMOUNT + NEWS_ROW_ARTICLE_AMOUNT
+
+try:
+    SORTING_METHOD = SortingMethod(config['website']['sorting_method'])
+except ValueError:
+    raise ValueError(f'Invalid sorting method: {config["website"]["sorting_method"]}. '
+                     f'Valid values: {list(SortingMethod.__members__.keys())}')

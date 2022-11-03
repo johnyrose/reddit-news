@@ -9,16 +9,16 @@ from site_generator.generate_site import generate_site
 
 
 def check_for_existing_db_file():
-    if os.path.exists(DB_FILE):
+    if os.path.exists(DB_FILE) and PERFORM_DATA_COLLECTION:
         logger.warning(f'SQLITE file {DB_FILE} already exists. This might cause duplicates or older articles to'
                        f' appear. If you want a clean slate, it is recommended to delete this file and run the '
                        f'process again.')
 
 
 def main():
+    check_for_existing_db_file()
     Base.metadata.create_all(db_engine)
     if PERFORM_DATA_COLLECTION:
-        check_for_existing_db_file()
         logger.info('Collecting subreddits...')
         collect_subreddits()
         logger.info('Generating articles...')

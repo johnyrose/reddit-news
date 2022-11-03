@@ -1,5 +1,4 @@
 from typing import List
-
 from pydantic import BaseModel
 
 from models.db.article import Article
