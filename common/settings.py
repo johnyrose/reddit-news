@@ -26,11 +26,15 @@ ENABLE_SQLALCHEMY_LOGGING = config['enable_sqlalchemy_logging']
 TEMPLATE_FILE = config['template_file']
 OUTPUT_FILE = config['output_file']
 
-MAIN_ARTICLES_MAX_LENGTH = config['website']['main_article_max_length']
-SUB_ARTICLES_MAX_LENGTH = config['website']['sub_articles_max_length']
-MINI_ARTICLES_MAX_LENGTH = config['website']['mini_articles_max_length']
-NEWS_ROW_MAX_LENGTH = config['website']['news_row_max_length']
+MAIN_ARTICLES_MAX_LENGTH = config['website']['text_length']['main_article']
+SUB_ARTICLES_MAX_LENGTH = config['website']['text_length']['sub_articles']
+MINI_ARTICLES_MAX_LENGTH = config['website']['text_length']['mini_articles']
+NEWS_ROW_MAX_LENGTH = config['website']['text_length']['news_rows_articles']
 
-TITLES_MAX_LENGTH = config['website']['titles_max_length']
+SUB_ARTICLES_AMOUNT = config['website']['articles_amount']['sub_articles']
+MINI_ARTICLES_AMOUNT = config['website']['articles_amount']['mini_articles']
+NEWS_ROW_ARTICLE_AMOUNT = config['website']['articles_amount']['news_row_articles']
 
-MINIMUM_ARTICLES_AMOUNT_WARNING = 8
+TITLES_MAX_LENGTH = config['website']['text_length']['titles']
+
+MINIMUM_ARTICLES_AMOUNT_WARNING = 1 + SUB_ARTICLES_AMOUNT + MINI_ARTICLES_AMOUNT + NEWS_ROW_ARTICLE_AMOUNT

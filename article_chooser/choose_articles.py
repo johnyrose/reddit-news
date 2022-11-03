@@ -2,7 +2,8 @@ from typing import List
 
 from common.db_connector import session_object
 from common.logger import logger
-from common.settings import MINIMUM_ARTICLES_AMOUNT_WARNING
+from common.settings import MINIMUM_ARTICLES_AMOUNT_WARNING, SUB_ARTICLES_AMOUNT, MINI_ARTICLES_AMOUNT, \
+    NEWS_ROW_ARTICLE_AMOUNT
 from models.db.article import Article
 from models.website.website import Website, NewsRow, WebsiteArticle
 
@@ -26,7 +27,7 @@ def generate_news_rows(articles: List[WebsiteArticle], website: Website):
         unused_subreddit_articles = [article for article in
                                      subreddit_articles if not website.is_article_in_website(article)]
         unused_subreddit_articles = sort_articles_by_upvotes(unused_subreddit_articles)
-        news_row = NewsRow(name=subreddit, articles=unused_subreddit_articles[:3])
+        news_row = NewsRow(name=subreddit, articles=unused_subreddit_articles[:NEWS_ROW_ARTICLE_AMOUNT])
         website.news_rows.append(news_row)
 
 
@@ -39,7 +40,7 @@ def choose_articles() -> Website:
     sorted_articles = sort_articles_by_upvotes(current_articles)
     main_article = sorted_articles[0]
     website = Website(main_article=main_article, sub_articles=[], mini_articles=[], news_rows=[])
-    website.sub_articles = sorted_articles[1:4]
-    website.mini_articles = sorted_articles[4:8]
+    website.sub_articles = sorted_articles[1:SUB_ARTICLES_AMOUNT + 1]
+    website.mini_articles = sorted_articles[SUB_ARTICLES_AMOUNT + 1: SUB_ARTICLES_AMOUNT + MINI_ARTICLES_AMOUNT + 1]
     generate_news_rows(sorted_articles, website)
     return website
