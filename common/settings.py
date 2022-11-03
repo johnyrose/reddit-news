@@ -3,28 +3,26 @@ import json
 with open('config.json') as config_file:
     config = json.load(config_file)
 
+REDDIT_USER = config['external_apis']['reddit']['user']
+REDDIT_PASSWORD = config['external_apis']['reddit']['password']
+REDDIT_CLIENT_ID = config['external_apis']['reddit']['clientId']
+REDDIT_CLIENT_SECRET = config['external_apis']['reddit']['clientSecret']
+REDDIT_USER_AGENT = config['external_apis']['reddit']['userAgent']
 
-REDDIT_USER = config['reddit']['user']
-REDDIT_PASSWORD = config['reddit']['password']
-REDDIT_CLIENT_ID = config['reddit']['clientId']
-REDDIT_CLIENT_SECRET = config['reddit']['clientSecret']
-REDDIT_USER_AGENT = config['reddit']['userAgent']
+EXTRACTOR_API_TOKEN = config['external_apis']['extractor']['api_token']
+EXTRACTOR_URL = config['external_apis']['extractor']['url']
 
-EXTRACTOR_API_TOKEN = config['extractor']['api_token']
-EXTRACTOR_URL = config['extractor']['url']
-
-MAX_PARALLEL_REQUESTS = config['max_parallel_requests']
-
-URLMETA_URL = config['urlmeta']['url']
-URLMETA_EMAIL = config['urlmeta']['email']
-URLMETA_API_TOKEN = config['urlmeta']['api_token']
+URLMETA_URL = config['external_apis']['urlmeta']['url']
+URLMETA_EMAIL = config['external_apis']['urlmeta']['email']
+URLMETA_API_TOKEN = config['external_apis']['urlmeta']['api_token']
 
 SUBREDDITS_CONFIG = config['subreddits']
-DB_FILE = config['db_file']
-ENABLE_SQLALCHEMY_LOGGING = config['enable_sqlalchemy_logging']
 
-TEMPLATE_FILE = config['template_file']
-OUTPUT_FILE = config['output_file']
+DB_FILE = config["general_settings"]['db_file']
+ENABLE_SQLALCHEMY_LOGGING = config["general_settings"]['enable_sqlalchemy_logging']
+MAX_PARALLEL_REQUESTS = config["general_settings"]['max_parallel_requests']
+TEMPLATE_FILE = config["general_settings"]['template_file']
+OUTPUT_FILE = config["general_settings"]['output_file']
 
 MAIN_ARTICLES_MAX_LENGTH = config['website']['text_length']['main_article']
 SUB_ARTICLES_MAX_LENGTH = config['website']['text_length']['sub_articles']

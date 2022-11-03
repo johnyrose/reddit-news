@@ -32,7 +32,7 @@ def generate_news_rows(articles: List[WebsiteArticle], website: Website):
 
 
 def choose_articles() -> Website:
-    db_articles: List[Article] = session_object.query(Article).all()  # TODO: Don't fetch all articles
+    db_articles: List[Article] = session_object.query(Article).all()
     if len(db_articles) < MINIMUM_ARTICLES_AMOUNT_WARNING:
         logger.warning(f'Too few articles: you have less than {MINIMUM_ARTICLES_AMOUNT_WARNING} articles in '
                        f'the database, which means that the website might be broken.')
