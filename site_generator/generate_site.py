@@ -1,6 +1,7 @@
 import jinja2
 
 from common.settings import TEMPLATE_FILE, OUTPUT_FILE
+from common.logger import logger
 from models.website.website import Website
 from site_generator.article_cleanup import cleanup_website_articles
 from site_generator.article_shorten import shorten_website_articles
@@ -23,3 +24,4 @@ def generate_site(website: Website):
                              mini_articles=mini_articles,
                              news_rows=news_rows)
     open(OUTPUT_FILE, 'w', encoding='utf-8').write(output)
+    logger.info(f'Website generation complete. Output file: {OUTPUT_FILE}')

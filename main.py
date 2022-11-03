@@ -3,15 +3,22 @@ from article_generator.generate_articles import generate_articles
 from collector import collect_subreddits
 from common.logger import logger
 from common.db_connector import Base, db_engine
+from common.settings import PERFORM_DATA_COLLECTION, PERFORM_WEBSITE_GENERATION
 from site_generator.generate_site import generate_site
 
 if __name__ == '__main__':
     Base.metadata.create_all(db_engine)
-    # logger.info('Collecting subreddits...')
-    # collect_subreddits()
-    # logger.info('Generating articles...')
-    # generate_articles()
-    logger.info('Choosing articles...')
-    website = choose_articles()
-    logger.info('Generating site...')
-    generate_site(website)
+    if PERFORM_DATA_COLLECTION:
+        logger.info('Collecting subreddits...')
+        collect_subreddits()
+        logger.info('Generating articles...')
+        generate_articles()
+    else:
+        logger.info('Data collection is disabled, skipping...')
+    if PERFORM_WEBSITE_GENERATION:
+        logger.info('Choosing articles...')
+        website = choose_articles()
+        logger.info('Generating site...')
+        generate_site(website)
+    else:
+        logger.info('Website generation is disabled, skipping...')

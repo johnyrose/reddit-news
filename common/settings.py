@@ -3,6 +3,9 @@ import json
 with open('config.json') as config_file:
     config = json.load(config_file)
 
+PERFORM_DATA_COLLECTION = config['tasks_to_perform']['data_collection']
+PERFORM_WEBSITE_GENERATION = config['tasks_to_perform']['website_generation']
+
 REDDIT_USER = config['external_apis']['reddit']['user']
 REDDIT_PASSWORD = config['external_apis']['reddit']['password']
 REDDIT_CLIENT_ID = config['external_apis']['reddit']['clientId']
