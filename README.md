@@ -17,7 +17,7 @@ The site generation flow generally goes through the following stages:
    * Generate a usable article from each post by extracting the article text and image from the post's link
  * **Site generation**:
    * Go through the generated articles and choose which articles will appear on the site
-   * Generate a static site from the chosen articles
+   * Generate a static site from the chosen articles with a Jinja template.
 
 ## Quickstart
 
