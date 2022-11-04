@@ -11,7 +11,7 @@ The project uses 3 external APIs to achieve the generated news site:
  * [URLMeta](https://home.urlmeta.org/) To extract display images from the links in the posts
  * [ExtractorAPI](https://extractorapi.com/) To extract the article text from the links in the posts
 
-The used website template is [News-journal](https://beefree.io/template/news-journal/) by [Andrea Dall'Ara](https://beefree.io/designer/andrea-dallara/).
+The used website template is based on [News-journal](https://beefree.io/template/news-journal/) by [Andrea Dall'Ara](https://beefree.io/designer/andrea-dallara/).
 
 The site generation flow generally goes through the following stages:
  * **Data collection**:
