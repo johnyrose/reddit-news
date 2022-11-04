@@ -1,6 +1,7 @@
 from typing import List
 
 from article_chooser.articles_sorting import sort_articles_by_score, sort_articles_by_relative_upvotes
+from article_chooser.filter_by_news_source import filter_out_articles_from_blocked_news_sources
 from article_chooser.subreddit_data import get_list_of_subreddits_with_articles, get_articles_for_subreddit
 from common.db_connector import session_object
 from common.logger import logger
@@ -35,6 +36,7 @@ def choose_articles() -> Website:
         logger.warning(f'Too few articles: you have less than {MINIMUM_ARTICLES_AMOUNT_WARNING} articles in '
                        f'the database, which means that the website might be broken.')
     current_articles: List[WebsiteArticle] = [WebsiteArticle.from_db_article(article) for article in db_articles]
+    current_articles = filter_out_articles_from_blocked_news_sources(current_articles)
     sorted_articles = sort_articles_by_chosen_method(current_articles)
     main_article = sorted_articles[0]
     website = Website(main_article=main_article, sub_articles=[], mini_articles=[], news_rows=[])
