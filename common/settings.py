@@ -1,8 +1,10 @@
 import json
-
+import os
 from models.website.sorting_method import SortingMethod
 
-with open('config.json') as config_file:
+
+CONFIG_FILE = os.getenv('CONFIG_FILE', 'config.json')
+with open(CONFIG_FILE) as config_file:
     config = json.load(config_file)
 
 PERFORM_DATA_COLLECTION = config['tasks_to_perform']['data_collection']
