@@ -1,10 +1,11 @@
 import jinja2
 
-from common.settings import TEMPLATE_FILE, OUTPUT_FILE
+from common.settings import TEMPLATE_FILE, OUTPUT_FILE, USE_LOCAL_IMAGES
 from common.logger import logger
 from models.website.website import Website
 from site_generator.article_cleanup import cleanup_website_articles
 from site_generator.article_shorten import shorten_website_articles
+from site_generator.download_images import download_images_locally
 
 
 def generate_site(website: Website):
@@ -13,6 +14,8 @@ def generate_site(website: Website):
     template = env.from_string(template_file_content)
     cleanup_website_articles(website)
     shorten_website_articles(website)
+    if USE_LOCAL_IMAGES:
+        download_images_locally(website)
 
     main_article = website.main_article.dict()
     sub_articles = [article.dict() for article in website.sub_articles]

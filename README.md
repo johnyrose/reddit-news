@@ -1,3 +1,4 @@
-## Things left to do:
-* Improve priority decision - make it a simple calculation between upvotes and how old an article is
-* Improve logging: remove SQL logging and use normal logging
+# Reddit News Site
+
+This is a small Python project that generates a minimalistic news site from Reddit posts. 
+

@@ -28,6 +28,8 @@ ENABLE_SQLALCHEMY_LOGGING = config["general_settings"]['enable_sqlalchemy_loggin
 MAX_PARALLEL_REQUESTS = config["general_settings"]['max_parallel_requests']
 TEMPLATE_FILE = config["general_settings"]['template_file']
 OUTPUT_FILE = config["general_settings"]['output_file']
+LOCAL_IMAGES_FOLDER = config["general_settings"]['local_images_folder']
+USE_LOCAL_IMAGES = config["general_settings"]['use_local_images']
 
 MAIN_ARTICLES_MAX_LENGTH = config['website']['text_length']['main_article']
 SUB_ARTICLES_MAX_LENGTH = config['website']['text_length']['sub_articles']
