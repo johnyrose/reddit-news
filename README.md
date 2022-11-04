@@ -153,6 +153,8 @@ This section contains a list of subreddits to get posts from. Each subreddit is 
  * **posts**: The amount of posts to get from the subreddit. 
  * **ignoreStickied**: Whether to ignore stickied posts.
 
+I highly suggest trying different subreddits and seeing different results.
+
 ### general_settings:
 
 These are general settings for the project. For the most part, I'd suggest leaving them as they are in the example above.
