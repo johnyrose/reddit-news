@@ -171,3 +171,6 @@ These are general settings for the project. For the most part, I'd suggest leavi
   * **score**: Sorts the articles by their score (upvotes).
   * **relative_upvotes**: Sorts the articles by their relative upvotes. This is calculated by dividing the article's upvotes by the amount of upvotes the article with the most upvotes has.
     * This method is a weird attempt to balance the article order between the different subreddit. It doesn't always work well, and I'd suggest trying it only if you're unsatisfied with the results of the `score` method.
+
+
+Thank you for checking out the project and I hope you enjoy using it! Feel free to contact me for any suggestions, feedback of questions.
