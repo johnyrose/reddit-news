@@ -166,6 +166,7 @@ These are general settings for the project. For the most part, I'd suggest leavi
 ### website:
 * **text_length**: The maximum length of the text to display in the generated site for each type of article.
 * **articles_amount**: The amount of articles to display in the generated site for each type of article.
+  * **Note**: Setting the `news_row` setting to a value higher than 3 will cause the site to look weird. 
 * **sorting_method**: The sorting method to use when sorting the articles in the generated site. Can be either `score` or `relative_upvotes`.
   * **score**: Sorts the articles by their score (upvotes).
   * **relative_upvotes**: Sorts the articles by their relative upvotes. This is calculated by dividing the article's upvotes by the amount of upvotes the article with the most upvotes has.
