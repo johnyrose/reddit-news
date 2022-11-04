@@ -1,15 +1,11 @@
 from typing import List
 
+from common.static_texts.blocked_news_sources import BLOCKED_NEWS_SOURCES
 from models.website.website import WebsiteArticle
-
-blocked_news_sources = [
-    "facteroid.com",  # Blocked due to no images in articles
-    "www.reuters.com"  # Blocked due to no images in articles
-]
 
 
 def is_article_from_blocked_news_source(article: WebsiteArticle) -> bool:
-    for source in blocked_news_sources:
+    for source in BLOCKED_NEWS_SOURCES:
         if source in article.url:
             return True
     return False
