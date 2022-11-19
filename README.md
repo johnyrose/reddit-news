@@ -32,7 +32,7 @@ Before you run the project, you'll need to generate API keys for the following s
  * [URLMeta](https://home.urlmeta.org/)
  * [ExtractorAPI](https://extractorapi.com/)
 
-Each of these services has a free tier that should be enough for this project, none of them require any payment information, and gettign the keys for all 3 should take no longer than 10 minutes.
+Each of these services has a free tier that should be enough for this project, none of them require any payment information, and getting the keys for all 3 should take no longer than 10 minutes.
 
 From each API, make sure you have the following data:
  * Reddit API:
